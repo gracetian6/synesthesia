@@ -1,0 +1,154 @@
+<!--
+CS50 Final Project / Page for composing with a keyboard and radio buttons; also displays PDF and MIDI file of the music
+-->
+
+{% extends "layout.html" %}
+
+{% block style %}
+    <!-- Personal external CSS stylesheet for radio buttons -->
+    <link href="/static/styleform.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Synesthesia
+{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="scrollmenu" name="playpause" style="font-size: 26px;">
+            <!-- Box containing features regarding the MIDI file (play, stop and download file) plus the delete button -->
+            <button type="button" class="btn-clear" id="play">&#9658;</button>
+            <button type="button" class="btn-clear" onclick="MIDIjs.stop('static/music.midi');">&#9724;</button>
+            <button type="button" class="btn-clear" id="undo">&#10554;</button>
+            <a href="static/music.midi" id="download" class="btn-clear" style="text-decoration:none; font-weight:bold;">&#8659;</a>
+        </div>
+
+        <form action="/home" method="post" id="form">
+            <div class="scrollmenu" name="notes" style="margin-top: -5px">
+                <center>
+                    <!-- Rhythm -->
+                    <input type="radio" id="1" value="1" name="length"/>
+                        <label for="1"><img src="/static/notes/1.png" alt="Whole" style="width:30px;"></label>
+                    <input type="radio" id="2" value="2" name="length"/>
+                        <label for="2"><img src="/static/notes/2.png" alt="Half" style="width:30px;"></label>
+                    <input type="radio" id="4" value="4" name="length" checked="checked"/>
+                        <label for="4"><img src="/static/notes/4.png" alt="Quarter" style="width:30px;"></label>
+                    <input type="radio" id="8" value="8" name="length"/>
+                        <label for="8"><img src="/static/notes/8.png" alt="Eighth" style="width:30px;"></label>
+                    <input type="radio" id="16" value="16" name="length"/>
+                        <label for="16"><img src="/static/notes/16.png" alt="Sixteenth" style="width:30px;"></label>
+                    <input type="radio" id="32" value="32" name="length"/>
+                        <label for="32"><img src="/static/notes/32.png" alt="Thirty-second" style="width:30px;"></label>
+                    <input type="radio" id="64" value="64" name="length"/>
+                        <label for="64"><img src="/static/notes/64.png" alt="Sixty-fourth" style="width:30px;"></label>
+
+                    <input type="radio" disabled>
+                    ||
+
+                    <!-- Rest -->
+                    <input type="radio" class="btn-clear" id="rest" value="r" name="rest"/>
+                        <label for="rest"><img src="/static/notes/rest.png" alt="Rest" style="width:30px;"></label>
+
+                    <input type="radio" disabled>
+                    <input type="radio" disabled>
+                    ||
+
+                    <!-- Dot in rythms -->
+                    <input type="radio" id="dot" value="." name="dot"/>
+                        <label for="dot"><img src="/static/notes/dot.png" alt="Dotted" style="width:30px;"></label>
+
+                    <input type="radio" disabled>
+                    ||
+
+                    <!-- Dynamics -->
+                    <input type="radio" id="pp" value="\pp" name="dyn"/>
+                        <label for="pp"><img src="/static/notes/pp.png" alt="Pianissimo" style="width:30px;"></label>
+                    <input type="radio" id="p" value="\p" name="dyn"/>
+                        <label for="p"><img src="/static/notes/p.png" alt="Piano" style="width:30px;"></label>
+                    <input type="radio" id="mp" value="\mp" name="dyn"/>
+                        <label for="mp"><img src="/static/notes/mp.png" alt="Mezzopiano" style="width:30px;"></label>
+                    <input type="radio" id="mf" value="\mf" name="dyn"/>
+                        <label for="mf"><img src="/static/notes/mf.png" alt="Mezzoforte" style="width:30px;"></label>
+                    <input type="radio" id="fo" value="\f" name="dyn"/>
+                        <label for="fo"><img src="/static/notes/fo.png" alt="Forte" style="width:30px;"></label>
+                    <input type="radio" id="ff" value="\ff" name="dyn"/>
+                        <label for="ff"><img src="/static/notes/ff.png" alt="Fortissimo" style="width:30px;"></label>
+
+                    <input type="radio" disabled>
+                    ||
+
+                    <!-- Articulations -->
+                    <input type="radio" id="stacc" value="\staccato" name="articulation"/>
+                        <label for="stacc"><img src="/static/notes/stacc.png" alt="Staccato" style="width:30px;"></label>
+                    <input type="radio" id="accent" value="\accent" name="articulation"/>
+                        <label for="accent"><img src="/static/notes/accent.png" alt="Accent" style="width:30px;"></label>
+                    <input type="radio" id="marc" value="\marcato" name="articulation"/>
+                        <label for="marc"><img src="/static/notes/marc.png" alt="Marcato" style="width:30px;"></label>
+                    <input type="radio" id="ten" value="\tenuto" name="articulation"/>
+                        <label for="ten"><img src="/static/notes/ten.png" alt="Tenuto" style="width:30px;"></label>
+
+                    <input type="radio" disabled>
+                </center>
+            </div><br>
+
+            <!-- Virutal keyboard -->
+            <center><div class="empty center" style="height: 200px; width:89%"><svg class="piano" height = "100%" width="100%" viewBox="0 0 300 300" preserveAspectRatio="xMinYMin meet">
+                <a name="btn" id="c3"><polygon points="200,10 230,10 230,100 245,100 245,220 200,220 200,10" class="white c" id="c3"/></a>
+                <a name="btn" id="d3"><polygon points="245,100 260,100 260,10 275,10 275,100 290,100 290,220 245,220 245,100" class="white d" id="d3"/></a>
+                <a name="btn" id="e3"><polygon points="305,10 335,10 335,220 290,220 290,100 305,100 305,10" class="white e" id="e3"/></a>
+                <a name="btn" id="f3"><polygon points="335,10 365,10 365,100 380,100 380,220 335,220 335,10" class="white f" id="f3"/></a>
+                <a name="btn" id="g3"><polygon points="380,100 395,100 395,10 410,10 410,100 425,100 425,220 380,220 380,100" class="white g" id="g3"/></a>
+                <a name="btn" id="a4"><polygon points="425,100 440,100 440,10 455,10 455,100 470,100 470,220 425,220 425,100" class="white a" id="a3"/></a>
+                <a name="btn" id="b4"><polygon points="470,100 485,100 485,10 515,10 515,220 470,220 470,100" class="white b" id="b3"/></a>
+                <a name="btn" id="c4"><polygon points="515,10 545,10 545,100 560,100 560,220 515,220 515,10" class="white c" id="c4"/></a>
+                <a name="btn" id="d4"><polygon points="560,100 575,100 575,10 590,10 590,100 605,100 605,220 560,220" class="white d" id="d4"/></a>
+                <a name="btn" id="e4"><polygon points="605,100 620,100 620,10 650,10 650,220 605,220 605,100" class="white e" id="e4"/></a>
+                <a name="btn" id="f4"><polygon points="650,10 680,10 680,100 695,100 695,220 650,220 650,10" class="white f" id="f4"/></a>
+                <a name="btn" id="g4"><polygon points="695,100 710,100 710,10 725,10 725,100 740,100 740,220 695,220 695,100" class="white g" id="g4"/></a>
+                <a name="btn" id="a5"><polygon points="740,100 755,100 755,10 770,10 770,100 785,100 785,220 740,220 740,100" class="white a" id="a4"/></a>
+                <a name="btn" id="b5"><polygon points="785,100 800,100 800,10 830,10 830,220 785,220 785,100" class="white b" id="b4"/></a>
+                <a name="btn" id="c5"><polygon points="830,10 860,10 860,100 875,100 875,220 830,220 830,10" class="white c" id="c5"/></a>
+                <a name="btn" id="d5"><polygon points="875,100 890,100 890,10 905,10 905,100 920,100 920,220 875,220" class="white d" id="d5"/></a>
+                <a name="btn" id="e5"><polygon points="920,100 935,100 935,10 965,10 965,220 920,220 920,100" class="white e" id="e5"/></a>
+                <a name="btn" id="f5"><polygon points="965,10 995,10 995,100 1010,100 1010,220 965,220 965,10" class="white f" id="f5"/></a>
+                <a name="btn" id="g5"><polygon points="1010,100 1025,100 1025,10 1040,10 1040,100 1055,100 1055,220 1010,220 1010,100" class="white g" id="g5"/></a>
+                <a name="btn" id="a6"><polygon points="1055,100 1070,100 1070,10 1085,10 1085,100 1100,100 1100,220 1055,220 1055,100" class="white a" id="a5"/></a>
+                <a name="btn" id="b6"><polygon points="1100,100 1115,100 1115,10 1145,10 1145,220 1100,220 1100,100" class="white b" id="b5"/></a>
+
+                <a name="btn" id="db3"><polygon points="230,10 260,10 260,100 230,100 230,10" class="black db" id="db3"/></a>
+                <a name="btn" id="eb3"><polygon points="275,10 305,10 305,100 275,100 275,10" class="black eb" id="eb3"/></a>
+                <a name="btn" id="gb3"><polygon points="365,10 395,10 395,100 365,100 365,10" class="black gb" id="gb3"/></a>
+                <a name="btn" id="ab4"><polygon points="410,10 440,10 440,100 410,100 410,10" class="black ab" id="ab3"/></a>
+                <a name="btn" id="bb4"><polygon points="455,10 485,10 485,100 455,100 455,10" class="black bb" id="bb3"/></a>
+                <a name="btn" id="db4"><polygon points="545,10 575,10 575,100 545,100 545,10" class="black db" id="db4"/></a>
+                <a name="btn" id="eb4"><polygon points="590,10 620,10 620,100 590,100 590,10" class="black eb" id="eb4"/></a>
+                <a name="btn" id="gb4"><polygon points="680,10 710,10 710,100 680,100 680,10" class="black gb" id="gb4"/></a>
+                <a name="btn" id="ab5"><polygon points="725,10 755,10 755,100 725,100 725,10" class="black ab" id="ab4"/></a>
+                <a name="btn" id="bb5"><polygon points="770,10 800,10 800,100 770,100 770,10" class="black bb" id="bb4"/></a>
+                <a name="btn" id="db5"><polygon points="860,10 890,10 890,100 860,100 860,10" class="black db" id="db5"/></a>
+                <a name="btn" id="eb5"><polygon points="905,10 935,10 935,100 905,100 905,10" class="black eb" id="eb5"/></a>
+                <a name="btn" id="gb5"><polygon points="995,10 1025,10 1025,100 995,100 995,10" class="black" id="gb5"/></a>
+                <a name="btn" id="ab6"><polygon points="1040,10 1070,10 1070,100 1040,100 1040,10" class="black" id="ab5"/></a>
+                <a name="btn" id="bb6"><polygon points="1085,10 1115,10 1115,100 1085,100 1085,10" class="black" id="bb5"/></a>
+            </svg></div></center>
+
+            <!-- Prompt error message if the user clicks the keyboard before the PDF has updated -->
+            <center>
+                <p hidden id="p" style="font-size:14pt; text-align:center; background-color:#8c8e90; color:white; width:40%;">
+                    Please wait, PDF in progress...
+                    <br>
+                </p>
+            </center>
+
+            <!-- Displays PDF with the sheet music always updated -->
+            <center><div class="empty center" style="width:80%;">
+                <center>
+                    <embed src="/static/piano_score.pdf" width="80%" height="720px" type='application/pdf' id="pdf">
+                </center>
+            </div></center>
+        </form>
+    </div>
+
+    <script defer src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script defer src="static/home.js"></script>
+{% endblock %}

@@ -1,0 +1,287 @@
+/*******************
+ * CS50 Final Project *
+ *******************/
+
+/* Fonts */
+@font-face
+{
+    font-family: lite;
+    src: url("Adequate-ExtraLight.ttf");
+}
+
+.lite
+{
+    font-family: lite;
+}
+
+
+/* Headers and body */
+body
+{
+    background-color: #f6f8f9;
+    color: #939098;
+}
+
+p
+{
+    text-indent: 6px;
+}
+
+h1
+{
+    font-family: lite;
+    color: #bababa;
+    letter-spacing: 1.5px;
+    text-align: center;
+    font-size: 380%;
+}
+
+h2
+{
+    font-variant: small-caps;
+    text-align: center;
+    color: #b3bdc5;
+}
+
+img {
+    border-radius: 4px;
+    width: 300px;
+    margin-left: 20px;
+}
+
+.big
+{
+    font-size: 150%;
+    letter-spacing: 2px;
+}
+
+/* Indents text */
+.tab
+{
+    margin-left: 50px;
+}
+
+.center
+{
+    text-align: center;
+}
+
+/* Accented text */
+.emph
+{
+    font-style: italic;
+    font-weight: bold;
+    color: #b3bdc5;
+}
+
+.body, .bodytext, h2
+{
+    font-family: arial;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    font-size: 12pt;
+}
+
+/* Divs */
+div
+{
+    box-sizing: border-box;
+    padding: 8px;
+    width: 93%;
+    border-style: solid;
+    border-width: 0px 1px;
+    border-color: #b3bdc5;
+    background-color: white;
+    margin: 0 auto;
+}
+
+/* Text divs */
+.body, .bodytext
+{
+    padding: 8px 18px;
+}
+
+/* Two-column text div */
+.bodytext
+{
+    text-align: justify;
+    column-count: 2;
+    column-gap: 40px;
+}
+
+/* Empty div */
+.empty
+{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+}
+
+/* Shadow divs */
+.shadow, .scrollmenu {
+    box-shadow: 0px 1px 2px 1px;
+}
+
+/* Nav */
+.active
+{
+    background-color: #e7e7e7;
+    font-weight: bold;
+}
+
+/* Scrolling menu: https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp */
+.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    background-color: #f6f8f9;
+}
+
+.scrollmenu a {
+    display: inline-block;
+    text-align: center;
+    padding: 0px 14px;
+    text-decoration: none;
+}
+
+.scrollmenu a:hover, .scrollbutton:hover {
+    background-color: #b3bdc5;
+    color: #8c8e90;
+}
+
+.scrollbutton {
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #b3bdc5;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #8c8e90;
+}
+
+.btn-clear {
+    color: #b3bdc5;
+    background-color: transparent;
+    border: none;
+}
+
+.btn-link:hover
+{
+    color: #8c8e90;
+    font-weight: bold;
+}
+
+.btn-link:visited
+{
+    color: #8c8e90;
+}
+
+/* Keyboard: https://hackernoon.com/create-a-piano-app-with-javascript-97dbad1ff28c */
+.white {
+  fill: white;
+  stroke: black;
+  stroke-width: 1;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.white:hover {
+  fill: #9e9e9e;
+  stroke: lightblue;
+  cursor: pointer;
+  stroke-width: 1;
+  outline: black solid 1px;
+}
+
+.black {
+  fill: black;
+  stroke-width: 1;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.black:hover {
+  fill: #515151;
+  stroke: #f6f8f9;
+  stroke-width: 1;
+  outline: black solid 1px;
+}
+
+/* Keys (color coding) */
+.c:active {
+    fill: #E9BACA;
+}
+
+.db:active {
+    fill: #E9C0BA;
+}
+
+.d:active {
+    fill: #E9D3BA;
+}
+
+.eb:active {
+    fill: #E9DBBA;
+}
+
+.e:active {
+    fill: #ECE9B7;
+}
+
+.f:active {
+    fill: #DCE9B7;
+}
+
+.gb:active {
+    fill: #C0EABF;
+}
+
+.g:active {
+    fill: #BFEADC;
+}
+
+.ab:active {
+    fill: #BFE0EA;
+}
+
+.a:active {
+    fill: #BFC7EA;
+}
+
+.bb:active {
+    fill: #D1C1E2;
+}
+
+.b:active {
+    fill: #E2C1E1;
+}
+
+
+/* Hyperlinks */
+a {
+    color: #b3bdc5;
+}
+
+a:link
+{
+    color: #b3bdc5;
+    text-decoration: underline;
+}
+
+a:hover, .nav-link:hover
+{
+    color: #8c8e90;
+    font-weight: bold;
+}
+
+a:visited
+{
+    color: #8c8e90;
+}

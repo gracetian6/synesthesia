@@ -1,0 +1,49 @@
+<!--
+CS50 Final Project / Layout for all the other HTML pages
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- jQuery -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!-- Personal external CSS stylesheet -->
+        <link href="/static/styles.css" rel="stylesheet">
+        <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+
+        {% block style %}{% endblock %}
+
+        <!-- Tab icon and site name -->
+        <link href="/static/cs50icon.ico" rel="icon">
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <div>
+            <h1>Synesthesia.</h1>
+
+            {% block header %}{% endblock %}
+            <!-- Navigator (from Bootstrap) -->
+            <nav class="nav"><h2>
+                <a class="nav-link" href="/home">compose</a>
+                |
+                <a class="nav-link" href="/chords">chord sheet</a>
+                |
+                <a class="nav-link" href="/">restart</a>
+                |
+                <a class="nav-link" href="/credits">credits</a>
+
+            </h2></nav>
+        </div>
+        <br>
+
+        <!-- Text body -->
+        {% block main %}{% endblock %}
+    </body>
+</html>

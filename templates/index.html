@@ -1,0 +1,131 @@
+<!--
+CS50 Final Project / Initial form in which the user provides the basic information for the music sheet
+-->
+
+{% extends "layout2.html" %}
+
+{% block style %}
+    <!-- Personal external CSS stylesheet for radio buttons -->
+    <link href="/static/stylegradient.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Synesthesia: Create File
+{% endblock %}
+
+{% block header %}
+    <div class="empty" style="height:50px;"></div>
+    <div class="empty txtshadow" style="width:100%;">
+        <h1>
+            Synesthesia.
+        </h1>
+        <h2>
+            start creating.
+        </h2>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <br>
+    <center>
+        <div class="empty" style="width:60%;">
+        <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+            <form action="/" method="post"><br>
+                <!-- Title -->
+                <div class="empty" style="width:90%;">
+                    <input type="text" autocomplete="off" autofocus class="form-control" id="title" name="title" placeholder="Title">
+                    <br></div>
+
+                <!-- Composer -->
+                <div class="empty" style="width:90%;">
+                    <input type="text" autocomplete="off" class="form-control" id="composer" name="composer" placeholder="Composer">
+                <br></div>
+
+                <!-- Time signature -->
+                <div class="empty" style="width:90%;">
+                    <select class="form-control" name="time">
+                        <option disabled selected value="">Select time signature</option>
+                        <option value="2/4">2/4</option>
+                        <option value="3/4">3/4</option>
+                        <option value="4/4">4/4</option>
+                        <option value="6/8">6/8</option>
+                        <option value="9/8">9/8</option>
+                        <option value="12/8">12/8</option>
+                    </select>
+                <br></div>
+
+                <!-- Key signature -->
+                <div class="empty" style="width:90%;">
+                    <div class="empty" style="width:50%; float:left;">
+                        <select class="form-control" name="notekey">
+                            <option disabled selected value="">Select key signature</option>
+                            <option value="c ">C</option>
+                            <option value="d ">D</option>
+                            <option value="e ">E</option>
+                            <option value="f ">F</option>
+                            <option value="g ">G</option>
+                            <option value="a ">A</option>
+                            <option value="b ">B</option>
+                        </select>
+                    </div>
+
+                    <!-- Tonality -->
+                    <div class="empty" style="width:50%; float:right;">
+                        <select class="form-control" name="tonkey">
+                            <option disabled selected value="">Select tonality</option>
+                            <option value="\major">Major</option>
+                            <option value="\minor">Minor</option>
+                        </select><br>
+                    </div>
+                </div>
+
+                <!-- Tempo -->
+                <div class="empty" style="width:90%;">
+                    <select class="form-control" name="tempo">
+                            <option disabled selected value="">Select tempo</option>
+                            <option value="Lento">Lento</option>
+                            <option value="Andante">Andante</option>
+                            <option value="Moderato">Moderato</option>
+                            <option value="Allegro">Allegro</option>
+                            <option value="Presto">Presto</option>
+                    </select><br>
+                </div>
+
+                <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+                <div class="empty txtshadow" style="width:30%; float:right; display:inline-block;">
+                    <button class="btn btn-primary" type="submit" name="button" value="file">Start writing music!</button>
+                </div>
+            </form>
+        </div>
+    </center>
+
+    <script>
+        document.querySelector('form').onsubmit = function() {
+        if (!document.querySelector('input[name="title"]').value) {
+            alert('Missing title');
+            return false;
+        }
+        else if (!document.querySelector('input[name="composer"]').value) {
+            alert('Missing composer');
+            return false;
+        }
+        else if (!document.querySelector('select[name="time"]').value) {
+            alert('Missing time signature');
+            return false;
+        }
+        else if (!document.querySelector('select[name="notekey"]').value) {
+            alert('Missing key signature');
+            return false;
+        }
+        else if (!document.querySelector('select[name="tonkey"]').value) {
+            alert('Missing tonality');
+            return false;
+        }
+        else if (!document.querySelector('select[name="tempo"]').value) {
+            alert('Missing tempo');
+            return false;
+        }
+        return true;
+        };
+    </script>
+{% endblock %}

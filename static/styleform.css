@@ -1,0 +1,20 @@
+/*******************
+ * CS50 Final Project *
+ *******************/
+
+ /* Custom radio buttons: https://jsfiddle.net/petrabarus/pPgS7/*/
+input {
+    visibility:hidden;
+}
+
+label {
+    cursor: pointer;
+    font-weight: normal;
+    color: #b3bdc5;;
+}
+
+label:hover, input:checked + label {
+    background: #b3bdc5;
+    color: #8c8e90;
+    font-weight: bold;
+}

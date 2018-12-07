@@ -1,0 +1,76 @@
+<!--
+CS50 Final Project / Information about the developers of this web app and links to the documentation
+-->
+{% extends "layout.html" %}
+
+{% block style %}
+<!-- Personal external CSS stylesheet for radio buttons -->
+<link href="/static/styleform.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Synesthesia: credits
+{% endblock %}
+
+
+{% block main %}
+    <br>
+    <center>
+        <!-- Little biography -->
+        <div style="width:80%;">
+            <div class="empty" style="width:70%; text-align:justify;">
+                <p>This web app has been built by Christine Cai, Sílvia Casacuberta and Grace Tian. We are three first-year
+                students at Harvard University and this is our final project for our programming course CS50.</p>
+                <br>
+                <p>Christine Cai is from New York and is planning to concentrate in Mathematics. She also enjoys arranging,
+                conducting, and composing music. </p>
+                <br>
+                <p>Sílvia Casacuberta is from Barcelona and is also planning to concentrate in Mathematics. She is also passionate about
+                music and plays the piano, the violin, and the flute.</p>
+                <br>
+                <p>Grace Tian is from Ohio and is planning to concentrate in Statistics. She is a lover of stationary and art supplies
+                and a hobbyist artist.</p>
+            </div>
+        </div><br>
+
+        <!-- Images of us three -->
+        <div class="empty" style="width:70%;">
+            <center><div class="row empty">
+                <div class="col-md-4 empty" style="width:31%;">
+                  <div class="imgAbt empty">
+                    <img src="/static/photos/christine.jpg" alt="Christine Cai" class="resize1 space" style="width:90%;">
+                    <figcaption>Christine Cai</figcaption>
+                  </div>
+                </div>
+                <div class="col-md-4 empty" style="width:30%;">
+                    <div class="imgAbt empty">
+                        <img src="/static/photos/silvia.JPG" alt="Sílvia Casacuberta" class="resize1 space" style="width:95%;">
+                        <figcaption>Sílvia Casacuberta</figcaption>
+                    </div>
+                </div>
+                <div class="col-md-4 empty" style="width:30%;">
+                    <div class="imgAbt empty">
+                        <img src="/static/photos/grace.jpg" alt="Grace Tian" class="resize1 space" style="width:90%;">
+                        <figcaption>Grace Tian</figcaption>
+                    </div>
+                </div>
+            </div></center>
+        </div><br>
+
+        <!-- Links to the documentation of the packages and languages that we have used -->
+        <div style="width:80%;">
+            <br><p>We would like to acknowledge the packages and documentation that we have used for the elaboration of
+            this web app, as well as the webpages that we have looked at.</p><br>
+            <div class="list-group empty">
+                <a href="http://lilypond.org/doc/v2.18/Documentation/usage/command_002dline-usage" class="list-group-item center"><p>Lilypond documentation</p></a>
+                <a href="https://python-ly.readthedocs.io/en/latest/" class="list-group-item center"><p>Python documentation</p></a>
+                <a href="http://abjad.mbrsi.org/" class="list-group-item center"><p>Abjad documentation</p></a>
+                <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/" class="list-group-item center"><p>Bootstrap documentation</p></a>
+                <a href="https://api.jquery.com/" class="list-group-item center"><p>Jquery API</p></a>
+                <a href="http://flask.pocoo.org/" class="list-group-item center"><p>Flask</p></a>
+
+
+            </div>
+        </div>
+    </center>
+{% endblock %}

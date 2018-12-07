@@ -1,0 +1,36 @@
+<!--
+CS50 Final Project / Displaying PDF and MIDI files for the melody of the user plus our harmonization
+-->
+{% extends "layout.html" %}
+
+{% block style %}
+    <!-- Personal external CSS stylesheet for radio buttons -->
+    <link href="/static/styleform.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Synesthesia
+{% endblock %}
+
+{% block main %}
+
+    <!-- Displays PDF with the sheet music always updated (with both the melody and our harmonization) -->
+    <div>
+        <!-- Box containing features regarding the MIDI file (play, stop and download file) -->
+        <div class="scrollmenu" name="playpause" style="font-size: 26px;">
+            <button type="button" class="btn-clear" id="play">&#9658;</a>
+            <button type="button" class="btn-clear" onclick="MIDIjs.stop('static/chords.midi');">&#9724;</button>
+            <a href="static/chords.midi" id=download class="btn-clear" style="text-decoration:none; font-weight:bold;">&#8659;</a>
+        </div>
+        <br>
+        <center><div class="empty center" style="width:80%;">
+            <center>
+                <embed src="static/piano_chords.pdf" width="80%" height="720px" type='application/pdf' id="pdf">
+            </center>
+        </div></center>
+    </div>
+
+    <script defer src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script defer src="static/chordsheet.js"></script>
+
+{% endblock %}
