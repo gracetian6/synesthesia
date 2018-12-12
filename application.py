@@ -104,12 +104,14 @@ def post_index():
 
         file.write('\\bar "' + '|."\n')
         file.write('}}\n')
-
+    print("CREATED TRYING.LY")
     # Create PDF by compiling trying.ly
     update("trying", "static/piano_score.pdf", "pdf")
+    print("CREATED TRYING.PDF")
 
     session['front_submitted'] = True
 
+    print("POST FORM COMPLETE")
     # Direct user to the keyboard page to start composing
     return redirect("/home")
 
@@ -179,9 +181,10 @@ def post_home():
         file.write("\n")
         file.write('\\bar "' + '|."\n')
         file.write("}}")
-
+    print("ADDED NOTE TO TRYING.LY")
     # Update the music sheet PDF
     update("trying", "static/piano_score.pdf", "pdf")
+    print("HOME FORM POSTED")
 
     return jsonify(True)
 

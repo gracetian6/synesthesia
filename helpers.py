@@ -21,6 +21,7 @@ def update(lilypond_name, output_file, file_type):
         # Update sheet music pdf
         subprocess.check_output('lilypond '+lilypond_name+'.ly', shell=True)
         subprocess.check_output('mv '+lilypond_name+'.' + file_type + " " + output_file, shell=True)
+        print("UPDATE MUSIC SUCCESFUL")
     # Restarts if there is an error
     except subprocess.CalledProcessError as e:
         print(e)
