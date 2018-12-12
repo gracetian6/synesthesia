@@ -1,7 +1,5 @@
 # CS50 Final Project / Create harmonization for the melody of the user
 
-
-import cs50
 import sys
 
 

@@ -1,6 +1,5 @@
 # CS50 Final Project / Main functions of the web page
 
-import cs50
 from flask import Flask, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
